@@ -1,0 +1,408 @@
+.transparent {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.scroll-y {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+    background-color: aliceblue;
+}
+
+table thead th {
+    white-space: nowrap;
+}
+
+.bg-body {
+    background-image: url("../media/Post 4.jpg");
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg-img {
+    min-height: 100% auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.text-tcl {
+    color: #f0ce37;
+}
+
+.img1 {
+    background-image: url("/media/dashboard_background.png");
+    height: 82vh;
+}
+
+.img2 {
+    background-image: url("/media/DSC00113.JPG");
+}
+
+.img3 {
+    background-image: url("/media/nakula_147.JPG");
+}
+
+body,
+html {
+    width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+.scroll-downs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    margin-bottom: 150px;
+
+    width: 34px;
+    height: 55px;
+}
+
+.mousey {
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.65;
+    box-sizing: content-box;
+}
+
+.scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+    animation-iteration-count: infinite;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+}
+
+.bg-white-transparent-75 {
+    background: hsla(0, 0%, 100%, 0.65);
+}
+
+.floating-button {
+    position: fixed;
+    z-index: 2;
+    /* Increase the z-index value to make the button appear above the drawer */
+}
+
+.footer {
+    bottom: 0;
+}
+
+.bot {
+    bottom: 20px;
+    transform: translateX(-50%);
+}
+
+.ctr {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bg-tcl {
+    background-color: #ffe76d;
+}
+
+.btn-tcl {
+    background-color: #ffe76d;
+    color: #000;
+    border: none;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-tcl:hover {
+    background-color: #bb9c00;
+    color: #fff;
+}
+
+.floating-button #indexToCart {
+    background-color: #ffe76d;
+    color: #000;
+    border: none;
+    font-size: 20px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.floating-button #indexToCart:hover {
+    color: #fff;
+    background-color: #bb9c00;
+}
+
+/* Settingan Prayer View */
+
+.marquee {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+    width: auto;
+    animation: marquee 15s linear infinite;
+    line-height: 50px; /* Center text vertically */
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(300%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#liveClock {
+    white-space: nowrap; /* Prevents wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds ellipsis if the text overflows */
+}
+
+.page {
+    background-color: #f8ffe9;
+}
+
+.card {
+    box-shadow: 0 10px 30px -5px rgba(76, 87, 125, 0.5) !important;
+}
+
+.floating-card {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 340px;
+    z-index: 1050;
+    background-color: #596843;
+    color: #f8ffe9;
+    border-radius: 25px 0 0 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+}
+
+.floating-card.enlarged {
+    width: 400px;
+    transition: width 1s ease;
+}
+
+.floating-card.enlarged #countdown {
+    font-size: 64px;
+    transition: font-size 1s ease;
+}
+
+.card-prayer {
+    border-radius: 25px 25px 25px 25px;
+    background-color: #7c8a60;
+}
+
+.card-bottom {
+    border-radius: 25px 25px 0px 0px;
+    background-color: #7c8a60;
+    margin-bottom: 0;
+}
+
+.text-card-bottom {
+    font-size: 48px;
+    font-weight: 400;
+    color: #f8ffe9;
+}
+
+.prayer {
+    font-size: 32px;
+    font-weight: 500;
+    color: #f8ffe9;
+}
+
+.time {
+    font-size: 104px;
+    font-weight: 300;
+    color: #f8ffe9;
+}
+
+.iqomah {
+    background-color: #596843;
+    color: #f8ffe9;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.rounded-25 {
+    border-radius: 25px 25px 25px 25px;
+}
+
+.rounded-40 {
+    border-radius: 40px;
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carousel-item img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-height: 899px) {
+    .floating-card {
+        width: 280px; /* Reduce size on small screens */
+    }
+
+    .card-prayer {
+        height: 50%;
+    }
+
+    .carousel-item img {
+        height: 50%; /* Reduce carousel height on small screens */
+    }
+}
+
+/* Ensure the columns don't stack awkwardly on small screens */
+@media (max-width: 576px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-2,
+    .col {
+        width: 100%;
+    }
+}
+
+/* END */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.radio {
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.radLabel {
+    margin: 5px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #009578;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.radInput {
+    display: none;
+}
+
+.radInput:checked + .radLabel {
+    background: #009578;
+    color: white;
+    border-radius: 10px;
+}
+
+.product-image {
+    max-width: 80px;
+    height: auto;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-price {
+    color: #f00;
+}
+
+.product-quantity {
+    width: 80px;
+    text-align: center;
+}
+
+.product-subtotal {
+    color: #f00;
+    font-weight: bold;
+}
+
+.checkout-btn {
+    margin-top: 20px;
+    float: right;
+}
+
+.img-cart {
+    height: 50px;
+    width: 50px;
+}
+
+#Quantity {
+    font-size: 16px;
+}
+
+.fill-container {
+    width: 100%;
+    object-fit: cover;
+}
