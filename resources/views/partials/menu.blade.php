@@ -39,6 +39,8 @@
             </div>
             @php
                 $user = auth()->user();
+                $currentRoute = Route::currentRouteName(); // Get current route name
+
                 if ($user && !empty($permissions)) {
                     // Extract allowed menu IDs from session permissions
                     $permissionMenuIds = collect($permissions)->where('can_read', 1)->pluck('menu_id')->toArray();
@@ -72,11 +74,23 @@
                 @php
                     // Check if this menu has any submenus
                     $hasSubMenus = $subMenus->where('parent_id', $menu->id)->isNotEmpty();
+
+                    // Determine if this menu or its submenu is active
+                    $isActive = $menu->route && str_contains($currentRoute, $menu->route); // Check parent menu
+                    $hasActiveSubmenu = $subMenus
+                        ->where('parent_id', $menu->id)
+                        ->pluck('route')
+                        ->contains(function ($route) use ($currentRoute) {
+                            return str_contains($currentRoute, $route);
+                        });
                 @endphp
 
-                <div class="menu-item mb-1 {{ $hasSubMenus ? 'menu-accordion' : '' }} {{ !$hasSubMenus ? 'menu-item-clickable' : '' }}"
+                <div class="menu-item mb-1 {{ $hasSubMenus ? 'menu-accordion' : '' }} {{ !$hasSubMenus ? 'menu-item-clickable' : '' }}
+        {{ $isActive || $hasActiveSubmenu ? 'active' : '' }}"
                     data-kt-menu-trigger="{{ $hasSubMenus ? 'click' : '' }}">
-                    <a class="menu-link" href={{ $menu->route ? route($menu->route . '.index') : '#' }}>
+
+                    <a class="menu-link {{ $isActive ? 'active' : '' }}"
+                        href="{{ $menu->route ? route($menu->route . '.index') : '#' }}">
                         <span class="menu-icon">{!! $menu->icon !!}</span>
                         <span class="menu-title">{{ $menu->name }}</span>
                         @if ($hasSubMenus)
@@ -85,11 +99,14 @@
                     </a>
 
                     @if ($hasSubMenus)
-                        <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-sub menu-sub-accordion {{ $hasActiveSubmenu ? 'show' : '' }}">
                             @foreach ($subMenus->where('parent_id', $menu->id) as $submenu)
+                                @php
+                                    $isSubmenuActive = $submenu->route && str_contains($currentRoute, $submenu->route);
+                                @endphp
                                 <div class="menu-item">
-                                    <a class="menu-link"
-                                        href={{ $submenu->route ? route($submenu->route . '.index') : '#' }}>
+                                    <a class="menu-link {{ $isSubmenuActive ? 'active' : '' }}"
+                                        href="{{ $submenu->route ? route($submenu->route . '.index') : '#' }}">
                                         <span class="menu-icon">{!! $submenu->icon !!}</span>
                                         <span class="menu-title">{{ $submenu->name }}</span>
                                     </a>

@@ -5,6 +5,10 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\WorkOrderController;
+use App\Http\Controllers\WorkOrderProgressController;
+use App\Http\Controllers\WorkOrderProgressMasterController;
+use App\Http\Controllers\WorkOrderReportController;
 use App\Http\Middleware\CheckPermission;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialiteController;
@@ -35,6 +39,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    Route::post('/workorder/next-step', [WorkOrderController::class, 'nextStep'])
+        ->name('workorder.nextStep');
+    Route::get('/report-excel', [WorkOrderReportController::class, 'excel'])->name('workorderreport.excel');
+    Route::get('/report-pdf', [WorkOrderReportController::class, 'pdf'])->name('workorderreport.pdf');
 
     //Middleware Permission
     Route::middleware([CheckPermission::class])->group(function () {
@@ -52,6 +60,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/menus', MenuManagementController::class);
         Route::resource('/roles', RoleManagementController::class);
         Route::resource('/permissions', PermissionController::class);
+
+        //Project Controller
+        Route::resource('/workorder', WorkOrderController::class);
+        Route::resource('/workorderprogressmaster', WorkOrderProgressMasterController::class)->parameters(['workorderprogressmaster' => 'progressMaster']);
     });
 
     // Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

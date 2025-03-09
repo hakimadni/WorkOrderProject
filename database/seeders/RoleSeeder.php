@@ -15,8 +15,8 @@ class RoleSeeder extends Seeder
     {
         Role::insert([
             ['name' => 'Admin'],
-            ['name' => 'Staff'],
-            ['name' => 'User'],
+            ['name' => 'Production Manager'],
+            ['name' => 'Operator'],
         ]);
     }
 }
