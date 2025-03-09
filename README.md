@@ -1,76 +1,105 @@
-# Laravel Boilerplate Project 🚀✨
+## 🚀 Work Order Management System Setup Guide
 
-![Laravel Logo](https://laravel.com/img/logomark.min.svg)
-![https://laravel.com/img/logomark.min.svg](https://preview.keenthemes.com/metronic/react/demo1/media/logos/logo-letter-1.png)
+This guide will help you set up the **Work Order Management System** on your local environment. Follow the steps below to get started.
 
-🎉 A **customizable Laravel boilerplate** designed to streamline project setup and development. This boilerplate includes pre-configured features for:  
-- 🛡️ Role-based access control  
-- 🔑 Dynamic permissions  
-- 🧩 Modular code structure  
+---
 
-💡 **Template based on Metronic 8**  
-🛠️ Boilerplate features built with ❤️ by **Hakeemu**  
+## 📋 Prerequisites
+- **PHP 8.1+**
+- **Composer**
+- **MySQL**
+- **Node.js & NPM** (for frontend assets)
+- **Laravel 10+**
 
+---
 
-## Key Features
-
-### 1. Role-Based Access Control (RBAC)
-- Efficient user-role management with CRUD functionalities.
-- Roles can dynamically assign permissions to menus and actions.
-
-### 2. Dynamic Permissions
-- Assign create, read, update, and delete (CRUD) permissions per role and menu.
-- Permissions are stored in the session for quick access.
-- Middleware-based enforcement of permissions across routes.
-
-### 3. Modular and Scalable
-- Organized folder structure for models, controllers, and views.
-- Supports modular extension for additional features.
-
-### 4. User and Menu Management
-- Manage users, assign roles, and handle permissions through a unified interface.
-- Menu hierarchy with parent and child menus, supporting nested permissions.
-
-### 5. UI Components
-- Dynamic tables for managing roles, users, and permissions with checkboxes for CRUD assignments.
-- Prebuilt modals for creating and editing users.
-
-### 6. Middleware for Enhanced Security
-- Middleware to check permissions before route access.
-- Automatically clears session permissions on logout.
-
-### 7. Enhanced Developer Experience
-- Fully commented code for easy understanding and customization.
-- Includes helper functions for streamlined role and permission management.
-
-## Setup Instructions
+## ⚙️ Installation Steps
 
 1. **Clone the Repository**
    ```bash
    git clone <repository-url>
-   cd <repository-directory>
+   cd <project-folder>
+   ```
 
 2. **Install Dependencies**
-    ```bash
-    composer install
-    npm install && npm run dev
-3. Setup .env from .env.example
-
-4. **Install Dependencies**
-    ```bash
-    php artisan migrate --seed
-
-5. **Run Project**
    ```bash
-    php artisan serve
+   composer install
+   npm install
+   ```
 
+3. **Environment Setup**
+   - Copy the `.env.example` file to `.env`
+   ```bash
+   cp .env.example .env
+   ```
+   - Update database credentials in the `.env` file:
+     ```
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=your_database_name
+     DB_USERNAME=your_database_username
+     DB_PASSWORD=your_database_password
+     ```
 
-## Usage
-- Access the dashboard at http://127.0.0.1:8000/dashboard.
-- Use the user management section to create users and assign roles.
-- Manage permissions dynamically through the role management section.
-- Contributing
-- Contributions are welcome! Feel free to fork the repository and submit pull requests.
+4. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
 
-### License
-This project is licensed under the MIT License.
+5. **Run Migrations and Seeders**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+6. **Storage Link**
+   ```bash
+   php artisan storage:link
+   ```
+
+7. **Compile Frontend Assets**
+   ```bash
+   npm run dev
+   ```
+
+8. **Serve the Application**
+   ```bash
+   php artisan serve
+   ```
+
+---
+
+## 🔐 Default Login Credentials
+
+| **Role**            | **Email**                | **Password** |
+|:------------------- |:------------------------ |:--------------|
+| Admin                | `admin@hakeemu.com`      | `123123123`    |
+| Production Manager   | `pm@hakeemu.com`         | `123123123`    |
+| Operator 1           | `op1@hakeemu.com`        | `123123123`    |
+| Operator 2           | `op2@hakeemu.com`        | `123123123`    |
+| Operator 3           | `op3@hakeemu.com`        | `123123123`    |
+
+---
+
+## 🛠️ Troubleshooting
+### **1. Update Failure Issue**
+If you encounter the error:
+```
+Missing required parameter for [Route: workorderprogressmaster.update]...
+```
+➡️ Make sure your route and controller match this format:
+```php
+<form action="{{ route('workorderprogressmaster.update', $progressMaster->id) }}" method="POST">
+```
+
+### **2. Kanban Status Setup**
+For grouping Kanban statuses dynamically based on `WorkOrderProgressMaster`, refer to the optimized controller logic and Blade structure shared earlier.
+
+---
+
+## 📞 Support
+If you face any issues, feel free to reach out or check the project documentation for additional guidance.
+
+Happy coding! 😊
+
+Pretty much I trained my GPT to assist to everything in this code
